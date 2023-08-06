@@ -1,0 +1,15 @@
+@import "./base.css";
+
+body,
+#app {
+  height: 100vh;
+  margin: 0px;
+  overflow: hidden;
+  background: var(--background) no-repeat 100%;
+}
+
+.CONTENT {
+  height: 100%;
+  width: 100%;
+  padding: 2rem;
+}
