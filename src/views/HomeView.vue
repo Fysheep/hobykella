@@ -51,6 +51,10 @@ export default {
       localStorage.speicher = JSON.stringify(this.images)
     },
     rotate(img: any) {
+      img.rotation = img.rotation % 360 == 0 ? 315 : (img.rotation - 45);
+    },
+    rotateR(img: any) {
+      
       img.rotation = img.rotation % 360 == 0 ? 45 : (img.rotation + 45);
     },
     clear() {
@@ -65,7 +69,7 @@ export default {
   <div class="CONTENT" @dragover="over">
     <div v-for="img in images" class="fit"
       :style="`height: ${img.height}px; width: ${img.width}px; top: ${img.pos.y}px; left: ${img.pos.x}px; transform: rotateZ(${img.rotation}deg)`"
-      @click="rotate(img)">
+      @click="rotate(img)" @contextmenu.prevent="rotateR(img)">
       <img :src="img.src" alt="Fick Dich" draggable="false">
       <div draggable="true" class="filler" @dragstart="drag($event, img)" />
     </div>
